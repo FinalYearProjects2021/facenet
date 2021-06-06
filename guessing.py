@@ -54,7 +54,8 @@ def extract_face(filename, required_size=(160, 160)):
     pixels = asarray(filename)
 
     results = detector.detect_faces(filename)
-    # print("results:{}".format(results))
+    print("results:{}".format(results))
+    # gives box(startx,starty,width,height) and confidence
 
     image2 = cv2.cvtColor(filename, cv2.COLOR_RGB2BGR)
     if len(results) != 0:
@@ -96,9 +97,11 @@ while cap.isOpened():
     ret, frame = cap.read()
     image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     face_array, frame = extract_face(image)
+    print(type(face_array))
+    #print(face_array.shape)
     if type(face_array) != type(0):
         # print(type(face_array))
-        # print(face_array.shape)
+        #print(face_array.shape)
         # m,n,o = face_array.shape
         # face_array = np.reshape(face_array,(1,m,n,o))
         # print(type(face_array))
@@ -134,10 +137,9 @@ while cap.isOpened():
                 name = "shashank"
                 sh += 1
             elif class_index == 1:
-                name = "skanda"
+                name = "prathap"
                 sk += 1
-		 else:
-			name = "sumanth"	
+		    	
 
         frame = draw_face(image, name)
 
